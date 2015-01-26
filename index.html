@@ -18,91 +18,40 @@
 
 <body>
 
-    <div class='jumbotron text-center'>
-        <h2>Time remaining until Axio retirement</h2>
-        <div class='row'>
-            <div class='hidden-xs col-sm-4'> <!-- calendar icon -->
-                <div class='cal-img'>
-                    <h3>December</h3>
-                    <h1>31</h1>
-                </div>
-            </div>
-            <div class='col-xs-12 col-sm-8'> <!-- days hours min sec table -->
-                <div class='col-xs-3'>
-                    <h2 id='days'></h2>
-                    <p>Days</p>
-                </div>
-                <div class='col-xs-3'>
-                    <h2 id='hours'></h2>
-                    <p>Hours</p>
-                </div>
-                <div class='col-xs-3'>
-                    <h2 id='minutes'></h2>
-                    <p>Minutes</p>
-                </div>
-                <div class='col-xs-3'>
-                    <h2 id='seconds'></h2>
-                    <p>Seconds</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container text-center">
+        <h1>Axio Countdown Widget</h1>
 
-    <footer class='container-fluid'>
-        <p>Inspired by <a href="http://www.it.northwestern.edu/canvasisnow/" target="_blank">Northwestern University's Canvas Countdown Clock</a></p>
-    </footer>
+        <p>The widget below is loaded with an iframe, so it could be loaded to any page. Here is the iframe code:</p>
+
+        <textarea style="font-family:monospace;
+                         overflow-x:scroll;
+                         overflow-y:hidden;
+                         resize:none;
+                         margin-bottom:20px;"
+                  cols="60"
+                  rows="5"
+                  wrap="off"
+                  readonly>
+<iframe src="https://atheiman.github.io/js-countdown-clock/axio_countdown.html"
+        width="100%"
+        height="180"
+        style="border:0;"
+        name="countdownWidget"></iframe>
+        </textarea>
+
+        <iframe src="https://atheiman.github.io/js-countdown-clock/axio_countdown.html"
+                width="100%"
+                height="180"
+                style="border:0;"
+                name="countdownWidget"></iframe>
+
+        <footer class='container-fluid' style='margin-top:20px;'>
+            <p>Inspired by <a href="http://www.it.northwestern.edu/canvasisnow/" target="_blank">Northwestern University's Canvas Countdown Clock</a></p>
+        </footer>
+    </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-
-    <script>
-        canvasDateString = 'Jan 1 2016';
-
-        cDate = new Date(canvasDateString);
-        function getDiffObj(date1, date2){
-            // Return diff obj with keys:
-            // 'days', 'hours', 'minutes', 'seconds'
-
-            date2 = date2 || new Date();
-            diff = Math.abs(date1 - date2)
-
-            dRatio = 86400000
-            hRatio = dRatio / 24
-            mRatio = hRatio / 60
-            sRatio = mRatio / 60
-
-            d = Math.floor(diff / dRatio)
-            remainder = diff % dRatio
-            h = Math.floor(remainder / hRatio)
-            remainder = diff % hRatio
-            m = Math.floor(remainder / mRatio)
-            remainder = diff % mRatio
-            s = Math.floor(remainder / sRatio)
-            remainder = diff % sRatio
-
-            obj = {
-                'days': d,
-                'hours': h,
-                'minutes': m,
-                'seconds': s
-            }
-            return obj
-        }
-
-        function renderCountdown(diffObj){
-            // Render countdown days, hours, minutes, and seconds in elements
-            document.getElementById('days').innerHTML = diffObj['days'];
-            document.getElementById('hours').innerHTML = diffObj['hours'];
-            document.getElementById('minutes').innerHTML = diffObj['minutes'];
-            document.getElementById('seconds').innerHTML = diffObj['seconds'];
-        }
-
-        // Render countdown when page is loaded
-        renderCountdown(getDiffObj(cDate));
-
-        // Render countdown every second, forever
-        setInterval(function () {renderCountdown(getDiffObj(cDate))}, 1000);
-    </script>
 
 </body>
 
